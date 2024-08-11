@@ -14,8 +14,17 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       // logoutUri={import.meta.env.REACT_APP_KINDE_LOGOUT_URI!}
       clientId="a0809cdaa39b496dbee1c99798bfa696"
       domain="https://salskhal.kinde.com"
-      redirectUri="http://localhost:5173"
-      logoutUri="http://localhost:5173"
+      // redirectUri="http://localhost:5173"
+      redirectUri={
+        process.env.NODE_ENV === "production"
+          ? "https://react-todo-app-ten-theta.vercel.app/"
+          : "http://localhost:5173"
+      }
+      logoutUri={
+        process.env.NODE_ENV === "production"
+          ? "https://react-todo-app-ten-theta.vercel.app/"
+          : "http://localhost:5173"
+      }
     >
       <TodoContextProvider>
         <App />
